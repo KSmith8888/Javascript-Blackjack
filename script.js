@@ -449,13 +449,9 @@ function stay() {
     if(cards[dealerDraw2].value == 'A') {
         cards[dealerDraw2].value = 1;
     }
-    if(cards[dealerDraw2].suit == 'Hearts') {
-        dealerHeart();
-    } else if(cards[dealerDraw2].suit == 'Diamonds') {
-        dealerDiamond();
-    } else if(cards[dealerDraw2].suit == 'Clubs') {
-        dealerSuit2.style.backgroundColor = 'black';
-    } else if(cards[dealerDraw2].suit == 'Spades') {
+    if(cards[dealerDraw2].suit == 'Hearts' || cards[dealerDraw2].suit == 'Diamonds') {
+        dealerSuit2.style.backgroundColor = 'red';
+    } else {
         dealerSuit2.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerDraw2].value;
