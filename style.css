@@ -1,0 +1,107 @@
+body {
+  background-color: green;
+  position: relative;
+}
+
+#gameNum {
+  background-color: red;
+}
+
+#card1 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 0;
+}
+
+#card2 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 110px;
+  margin-top: -29vh;
+}
+
+#hit1Card {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 220px;
+  margin-top: -32vh;
+}
+
+#hit2Card {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 330px;
+  margin-top: -32vh;
+}
+
+#hit3Card {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 440px;
+  margin-top: -32vh;
+}
+
+#hit4Card {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 550px;
+  margin-top: -32vh;
+}
+
+button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#dealerCard1 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 0;
+}
+
+#dealerCard2 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 110px;
+  margin-top: -29vh;
+}
