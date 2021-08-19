@@ -4,6 +4,13 @@ let cardOneNum = document.getElementById('card1Num');
 let cardTwoNum = document.getElementById('card2Num');
 let dealCard1Num = document.getElementById('dealerCard1Num');
 let dealCard2Num = document.getElementById('dealerCard2Num');
+let deductPlayer10 = false;
+let aceEquals11 = false;
+let ace2Equals11 = false;
+let ace3Equals11 = false;
+let ace4Equals11 = false;
+let ace5Equals11 = false;
+let ace6Equals11 = false;
 
 
 let cards = [
@@ -276,7 +283,7 @@ function dealerDraw() {
         cards[dealerDraw1].value = 10;
     }
     if(cards[dealerDraw1].value == 'A') {
-        cards[dealerDraw1].value = 1;
+        cards[dealerDraw1].value = 11;
     }
     if(cards[dealerDraw1].suit == 'Hearts') {
         dealerHeart();
@@ -298,6 +305,7 @@ function drawCards() {
     }
     if(cards[rando].value == 'A' && document.getElementById('yourHand').innerText <= 10) {
         cards[rando].value = 11;
+        aceEquals11 = true;
     }
     if(cards[rando].suit == 'Hearts') {
         drawHeart();
@@ -318,6 +326,7 @@ function drawCards() {
         cards[rando2].value = 1;
     } else if(cards[rando2].value == 'A' && document.getElementById('card1Num').innerHTML != 'A'){
         cards[rando2].value = 11;
+        ace2Equals11 = true;
     } 
     if(cards[rando2].suit == 'Hearts' || cards[rando2].suit == 'Diamonds') {
         suit2.style.backgroundColor = 'red';
@@ -342,6 +351,7 @@ function hit1() {
     }
     if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
+        ace3Equals11 = true;
     } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
         cards[randoNew].value = 1;
     }
@@ -351,15 +361,7 @@ function hit1() {
         hit1Suit.style.backgroundColor = 'black';
     }
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
-    if(document.getElementById('card1Num').innerHTML == 'A' && document.getElementById('card2Num').innerHTML != 'A' && document.getElementById('yourHand').innerText > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }
-    if(document.getElementById('card2Num').innerHTML == 'A' && document.getElementById('card1Num').innerHTML != 'A' && document.getElementById('yourHand').innerText > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }
-    if(document.getElementById('card1Num').innerHTML == 'A' && document.getElementById('card2Num').innerHTML == 'A' && document.getElementById('card1Num').innerHTML != 'A' && document.getElementById('yourHand').innerText > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }
+    doesAceBust();
 }
 
 function hit2() {
@@ -372,6 +374,7 @@ function hit2() {
     }
     if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
+        ace4Equals11 = true;
     } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
         cards[randoNew].value = 1;
     }
@@ -384,12 +387,7 @@ function hit2() {
     if(document.getElementById('card1Num').innerHTML === 'A' && document.getElementById('card2Num').innerHTML === 'A' && parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value > 21) {
         document.getElementById('yourHand').innerText -= 10;
     }
-    if(document.getElementById('card1Num').innerHTML == 'A' && document.getElementById('card2Num').innerHTML == 'A' && document.getElementById('card1Num').innerHTML != 'A' && document.getElementById('yourHand').innerText > 21 && document.getElementById('hit1Num').innerHTML <= 9) {
-        document.getElementById('yourHand').innerText -= 10;
-    }
-    /*if(document.getElementById('hit1Num').innerHTML === 'A' && parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }*/
+    doesAceBust();
 }
 
 function hit3() {
@@ -402,6 +400,7 @@ function hit3() {
     }
     if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
+        ace5Equals11 = true;
     } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
         cards[randoNew].value = 1;
     }
@@ -411,9 +410,7 @@ function hit3() {
         hit3Suit.style.backgroundColor = 'black';
     }
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
-    /*if(document.getElementById('hit2Num').innerHTML === 'A' && parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }*/
+    doesAceBust();
 }
 
 function hit4() {
@@ -426,6 +423,7 @@ function hit4() {
     }
     if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
+        ace6Equals11 = true;
     } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
         cards[randoNew].value = 1;
     }
@@ -435,9 +433,7 @@ function hit4() {
         hit4Suit.style.backgroundColor = 'black';
     }
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
-    /*if(document.getElementById('hit3Num').innerHTML === 'A' && parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }*/
+    doesAceBust();
 }
 
 function stay() {
@@ -446,7 +442,9 @@ function stay() {
     if(cards[dealerDraw2].value == 'J' || cards[dealerDraw2].value == 'Q' || cards[dealerDraw2].value == 'K') {
         cards[dealerDraw2].value = 10;
     }
-    if(cards[dealerDraw2].value == 'A') {
+    if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerDraw2].value = 11;
+    } else if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
         cards[dealerDraw2].value = 1;
     }
     if(cards[dealerDraw2].suit == 'Hearts' || cards[dealerDraw2].suit == 'Diamonds') {
@@ -455,6 +453,104 @@ function stay() {
         dealerSuit2.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerDraw2].value;
+    let deductedTen = false;
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit1'><h2 id='dealerHit1Num'>0</h2><canvas id='dealerHit1Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit1Num = document.getElementById('dealerHit1Num');
+      let dealerHit1 = Math.floor(Math.random() * 52)
+    dealerHit1Num.textContent = cards[dealerHit1].value;
+    if(cards[dealerHit1].value == 'J' || cards[dealerHit1].value == 'Q' || cards[dealerHit1].value == 'K') {
+        cards[dealerHit1].value = 10;
+    }
+    if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit1].value = 11;
+    } else if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit1].value = 1;
+    }
+    if(cards[dealerHit1].suit == 'Hearts' || cards[dealerHit1].suit == 'Diamonds') {
+        dealerHit1Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit1Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit1].value;
+    }
+    if(document.getElementById('dealerCard1Num').innerHTML == 'A' && document.getElementById('dealerHand').innerText + parseInt(document.getElementById('dealerHit1Num').innerText) > 21) {
+      document.getElementById('dealerHand').innerText -= 10;
+      deductedTen = true;
+    } else if(cards[dealerDraw2].value == 11 && deductedTen == false && document.getElementById('dealerHand').innerText + parseInt(document.getElementById('dealerHit1Num').innerText) > 21) {
+      document.getElementById('dealerHand').innerText -= 10;
+      deductedTen = true;
+    }
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit2'><h2 id='dealerHit2Num'>0</h2><canvas id='dealerHit2Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit2Num = document.getElementById('dealerHit2Num');
+      let dealerHit2 = Math.floor(Math.random() * 52)
+    dealerHit2Num.textContent = cards[dealerHit2].value;
+    if(cards[dealerHit2].value == 'J' || cards[dealerHit2].value == 'Q' || cards[dealerHit2].value == 'K') {
+        cards[dealerHit2].value = 10;
+    }
+    if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit2].value = 11;
+    } else if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit2].value = 1;
+    }
+    if(cards[dealerHit2].suit == 'Hearts' || cards[dealerHit2].suit == 'Diamonds') {
+        dealerHit2Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit2Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit2].value;
+    }
+    if(document.getElementById('dealerCard1Num').innerHTML == 'A' && document.getElementById('dealerHand').innerText + parseInt(document.getElementById('dealerHit1Num').innerText) > 21) {
+      document.getElementById('dealerHand').innerText -= 10;
+      deductedTen = true;
+    } else if(cards[dealerDraw2].value == 11 && deductedTen == false && document.getElementById('dealerHand').innerText + parseInt(document.getElementById('dealerHit1Num').innerText) > 21) {
+      document.getElementById('dealerHand').innerText -= 10;
+      deductedTen = true;
+    } else if(parseInt(document.getElementById('dealerHit1Num').innerText) == 11 && deductedTen == false && document.getElementById('dealerHand').innerText + parseInt(document.getElementById('dealerHit2Num').innerText) > 21) {
+      document.getElementById('dealerHand').innerText -= 10;
+      deductedTen = true;
+    }
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit3'><h2 id='dealerHit3Num'>0</h2><canvas id='dealerHit3Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit3Num = document.getElementById('dealerHit3Num');
+      let dealerHit3 = Math.floor(Math.random() * 52)
+    dealerHit3Num.textContent = cards[dealerHit3].value;
+    if(cards[dealerHit3].value == 'J' || cards[dealerHit3].value == 'Q' || cards[dealerHit3].value == 'K') {
+        cards[dealerHit3].value = 10;
+    }
+    if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit3].value = 11;
+    } else if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit3].value = 1;
+    }
+    if(cards[dealerHit3].suit == 'Hearts' || cards[dealerHit3].suit == 'Diamonds') {
+        dealerHit3Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit3Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit3].value;
+    }
+}
+
+function doesAceBust() {
+  if(aceEquals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  } else if(ace2Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  }
+  else if(ace3Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  }
+  else if(ace4Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  }
+  else if(ace5Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  }
+  else if(ace6Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+  }
 }
       
 function drawHeart() {
