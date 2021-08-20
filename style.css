@@ -234,7 +234,7 @@ button {
   #container {
     display: grid;
     grid-template-columns: 17vw 17vw 17vw 17vw 17vw 15vw;
-    grid-template-rows: 12vh 11vh 11vh 12vh 4vh 11vh 11vh 12vh;
+    grid-template-rows: 11vh 10vh 10vh 15vh 4vh 10vh 10vh 15vh;
     justify-items: center;
     height: 105vh;
   }
