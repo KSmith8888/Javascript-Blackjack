@@ -215,11 +215,36 @@ button {
     height: 90px;
     width: 50px;
   }
+  #dealerHit1 {
+    margin-left: 16vw;
+    margin-top: -16vh;
+  }
+  #dealerHit2 {
+    margin-top: -21vh;
+    margin-left: 33vw;
+  }
+  #dealerHit3 {
+    margin-top: -17.5vh;
+    margin-left: 51vw;
+  }
+  #dealerHit4 {
+    margin-top: -1vh;
+    margin-left: 8vw;
+  }
   #container {
-  display: grid;
-  grid-template-columns: 15vw 15vw 15vw 15vw 15vw 15vw;
-  grid-template-rows: 10vh 6vh 10vh 30vh 5vh 10vh 10vh 20vh;
-  justify-items: center;
-  height: 101vh;
-}
+    display: grid;
+    grid-template-columns: 17vw 17vw 17vw 17vw 17vw 15vw;
+    grid-template-rows: 13vh 10vh 10vh 20vh 5vh 10vh 10vh 20vh;
+    justify-items: center;
+    height: 105vh;
+  }
+  button {
+    width: 60px;
+  }
+  #drawCards {
+    width: 90px;
+  }
+  h1 {
+    margin-top: 1vh;
+  }
 }
