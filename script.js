@@ -205,11 +205,17 @@ function hit4() {
 
 function gameMessage() {
     if(parseInt(document.getElementById('dealerHand').innerText) > parseInt(document.getElementById('yourHand').innerText) && parseInt(document.getElementById('dealerHand').innerText) <= 21) {
+      setTimeout(function() {
       alert('You lose! Better luck next time')
+      }, 500);
     } else if(parseInt(document.getElementById('dealerHand').innerText) == parseInt(document.getElementById('yourHand').innerText)) {
+        setTimeout(function() {
         alert('Push!')
+        }, 500);
     } else {
+        setTimeout(function() {
         alert('You Win!')
+        }, 500);
     }
 }
 
