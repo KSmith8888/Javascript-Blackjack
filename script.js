@@ -3,7 +3,6 @@ let cardTwo = document.getElementById('card2');
 let cardOneNum = document.getElementById('card1Num');
 let cardTwoNum = document.getElementById('card2Num');
 let dealCard1Num = document.getElementById('dealerCard1Num');
-let dealCard2Num = document.getElementById('dealerCard2Num');
 
 let aceEquals11 = false;
 let ace2Equals11 = false;
@@ -221,7 +220,7 @@ function gameMessage() {
 
 function stay() {
     let dealerDraw2 = Math.floor(Math.random() * 52)
-    dealCard2Num.textContent = cards[dealerDraw2].value;
+    document.getElementById('dealerCard2Num').textContent = cards[dealerDraw2].value;
     if(cards[dealerDraw2].value == 'J' || cards[dealerDraw2].value == 'Q' || cards[dealerDraw2].value == 'K') {
         cards[dealerDraw2].value = 10;
     }
