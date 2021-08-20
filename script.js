@@ -54,6 +54,32 @@ function dealerDraw() {
     document.getElementById('dealerHand').innerText = cards[dealerDraw1].value;
 }
 
+function doesAceBust() {
+  if(aceEquals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      aceEquals11 = false;
+  } else if(ace2Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      ace2Equals11 = false;
+  }
+  else if(ace3Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      ace3Equals11 = false;
+  }
+  else if(ace4Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      ace4Equals11 = false;
+  }
+  else if(ace5Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      ace5Equals11 = false;
+  }
+  else if(ace6Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
+      document.getElementById('yourHand').innerText -= 10;
+      ace6Equals11 = false;
+  }
+}
+
 function drawCards() {
     let rando = Math.floor(Math.random() * 52);
     cardOneNum.textContent = cards[rando].value;
@@ -90,8 +116,9 @@ function drawCards() {
     if((document.getElementById('yourHand').innerText = cards[rando].value + cards[rando2].value) < 21) {
         document.getElementById('drawCards').outerHTML = `<button id='drawCards' onclick='hit1()'>Hit</button><button id='stay()' onclick='stay()'>Stay</button>`
     } else {
-        alert('Blackjack! You Win')
-        document.getElementById('drawCards').outerHTML = `<button id='stay()' onclick='stay()'>Stay</button>`
+        setTimeout(function() {
+        alert('Blackjack! You Win');
+        }, 300);
     }
     dealerDraw();
 }
@@ -103,11 +130,11 @@ function hit1() {
     if(cards[randoNew].value == 'J' || cards[randoNew].value == 'Q' || cards[randoNew].value == 'K') {
         cards[randoNew].value = 10;
     }
-    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
+    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
+        cards[randoNew].value = 1;
+    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
         ace3Equals11 = true;
-    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
-        cards[randoNew].value = 1;
     }
     if(cards[randoNew].suit == 'Hearts' || cards[randoNew].suit == 'Diamonds') {
         hit1Suit.style.backgroundColor = 'red';
@@ -117,8 +144,10 @@ function hit1() {
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
     doesAceBust();
     if(parseInt(document.getElementById('yourHand').innerText) > 21) {
-        alert('You Busted! Better luck next time')
-    }
+        setTimeout(function() {
+    alert('You Busted! Better luck next time');
+    }, 300);
+}
 }
 
 function hit2() {
@@ -129,11 +158,11 @@ function hit2() {
     if(cards[randoNew].value == 'J' || cards[randoNew].value == 'Q' || cards[randoNew].value == 'K') {
         cards[randoNew].value = 10;
     }
-    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
+    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
+        cards[randoNew].value = 1;
+    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
         ace4Equals11 = true;
-    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
-        cards[randoNew].value = 1;
     }
     if(cards[randoNew].suit == 'Hearts' || cards[randoNew].suit == 'Diamonds') {
         hit2Suit.style.backgroundColor = 'red';
@@ -146,7 +175,9 @@ function hit2() {
     }
     doesAceBust();
     if(parseInt(document.getElementById('yourHand').innerText) > 21) {
+        setTimeout(function() {
         alert('You Busted! Better luck next time')
+        }, 300);
     }
 }
 
@@ -158,11 +189,11 @@ function hit3() {
     if(cards[randoNew].value == 'J' || cards[randoNew].value == 'Q' || cards[randoNew].value == 'K') {
         cards[randoNew].value = 10;
     }
-    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
+    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
+        cards[randoNew].value = 1;
+    }else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
         ace5Equals11 = true;
-    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
-        cards[randoNew].value = 1;
     }
     if(cards[randoNew].suit == 'Hearts' || cards[randoNew].suit == 'Diamonds') {
         hit3Suit.style.backgroundColor = 'red';
@@ -172,7 +203,9 @@ function hit3() {
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
     doesAceBust();
     if(parseInt(document.getElementById('yourHand').innerText) > 21) {
+        setTimeout(function() {
         alert('You Busted! Better luck next time')
+        }, 300);
     }
 }
 
@@ -184,11 +217,11 @@ function hit4() {
     if(cards[randoNew].value == 'J' || cards[randoNew].value == 'Q' || cards[randoNew].value == 'K') {
         cards[randoNew].value = 10;
     }
-    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
+    if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
+        cards[randoNew].value = 1;
+    }else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) <= 21) {
         cards[randoNew].value = 11;
         ace6Equals11 = true;
-    } else if(cards[randoNew].value == 'A' && (document.getElementById('yourHand').innerText + 11) > 21) {
-        cards[randoNew].value = 1;
     }
     if(cards[randoNew].suit == 'Hearts' || cards[randoNew].suit == 'Diamonds') {
         hit4Suit.style.backgroundColor = 'red';
@@ -198,7 +231,9 @@ function hit4() {
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
     doesAceBust();
     if(parseInt(document.getElementById('yourHand').innerText) > 21) {
+        setTimeout(function() {
         alert('You Busted! Better luck next time')
+        }, 300);
     }
 }
 
@@ -216,119 +251,6 @@ function gameMessage() {
         alert('You Win!')
         }, 500);
     }
-}
-
-function stay() {
-    let dealerDraw2 = Math.floor(Math.random() * 52)
-    document.getElementById('dealerCard2Num').textContent = cards[dealerDraw2].value;
-    if(cards[dealerDraw2].value == 'J' || cards[dealerDraw2].value == 'Q' || cards[dealerDraw2].value == 'K') {
-        cards[dealerDraw2].value = 10;
-    }
-    if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
-        cards[dealerDraw2].value = 11;
-        dealer2Ace11 = true;
-    } else if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
-        cards[dealerDraw2].value = 1;
-    }
-    if(cards[dealerDraw2].suit == 'Hearts' || cards[dealerDraw2].suit == 'Diamonds') {
-        dealerSuit2.style.backgroundColor = 'red';
-    } else {
-        dealerSuit2.style.backgroundColor = 'black';
-    }
-    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerDraw2].value;
-    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
-      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit1'><h2 id='dealerHit1Num'>0</h2><canvas id='dealerHit1Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit1Num = document.getElementById('dealerHit1Num');
-      let dealerHit1 = Math.floor(Math.random() * 52)
-    dealerHit1Num.textContent = cards[dealerHit1].value;
-    if(cards[dealerHit1].value == 'J' || cards[dealerHit1].value == 'Q' || cards[dealerHit1].value == 'K') {
-        cards[dealerHit1].value = 10;
-    }
-    if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
-        cards[dealerHit1].value = 11;
-        dealer3Ace11 = true;
-    } else if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
-        cards[dealerHit1].value = 1;
-    }
-    if(cards[dealerHit1].suit == 'Hearts' || cards[dealerHit1].suit == 'Diamonds') {
-        dealerHit1Suit.style.backgroundColor = 'red';
-    } else {
-        dealerHit1Suit.style.backgroundColor = 'black';
-    }
-    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit1].value;
-    }
-    dealerAceBust();
-    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
-      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit2'><h2 id='dealerHit2Num'>0</h2><canvas id='dealerHit2Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit2Num = document.getElementById('dealerHit2Num');
-      let dealerHit2 = Math.floor(Math.random() * 52)
-    dealerHit2Num.textContent = cards[dealerHit2].value;
-    if(cards[dealerHit2].value == 'J' || cards[dealerHit2].value == 'Q' || cards[dealerHit2].value == 'K') {
-        cards[dealerHit2].value = 10;
-    }
-    if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
-        cards[dealerHit2].value = 11;
-        dealer4Ace11 = true;
-    } else if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
-        cards[dealerHit2].value = 1;
-    }
-    if(cards[dealerHit2].suit == 'Hearts' || cards[dealerHit2].suit == 'Diamonds') {
-        dealerHit2Suit.style.backgroundColor = 'red';
-    } else {
-        dealerHit2Suit.style.backgroundColor = 'black';
-    }
-    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit2].value;
-    }
-    dealerAceBust();
-    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
-      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit3'><h2 id='dealerHit3Num'>0</h2><canvas id='dealerHit3Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit3Num = document.getElementById('dealerHit3Num');
-      let dealerHit3 = Math.floor(Math.random() * 52)
-    dealerHit3Num.textContent = cards[dealerHit3].value;
-    if(cards[dealerHit3].value == 'J' || cards[dealerHit3].value == 'Q' || cards[dealerHit3].value == 'K') {
-        cards[dealerHit3].value = 10;
-    }
-    if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
-        cards[dealerHit3].value = 11;
-        dealer5Ace11 = true;
-    } else if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
-        cards[dealerHit3].value = 1;
-    }
-    if(cards[dealerHit3].suit == 'Hearts' || cards[dealerHit3].suit == 'Diamonds') {
-        dealerHit3Suit.style.backgroundColor = 'red';
-    } else {
-        dealerHit3Suit.style.backgroundColor = 'black';
-    }
-    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit3].value;
-    }
-    dealerAceBust();
-    gameMessage();
-}
-
-function doesAceBust() {
-  if(aceEquals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      aceEquals11 = false;
-  } else if(ace2Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      ace2Equals11 = false;
-  }
-  else if(ace3Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      ace3Equals11 = false;
-  }
-  else if(ace4Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      ace4Equals11 = false;
-  }
-  else if(ace5Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      ace5Equals11 = false;
-  }
-  else if(ace6Equals11 == true && parseInt(document.getElementById('yourHand').innerText) > 21) {
-      document.getElementById('yourHand').innerText -= 10;
-      ace6Equals11 = false;
-  }
 }
 
 function dealerAceBust() {
@@ -355,4 +277,113 @@ function dealerAceBust() {
       document.getElementById('dealerHand').innerText -= 10;
       dealer6Ace11 = false;
   }
+}
+
+function stay() {
+    let dealerDraw2 = Math.floor(Math.random() * 52)
+    document.getElementById('dealerCard2Num').textContent = cards[dealerDraw2].value;
+    if(cards[dealerDraw2].value == 'J' || cards[dealerDraw2].value == 'Q' || cards[dealerDraw2].value == 'K') {
+        cards[dealerDraw2].value = 10;
+    }
+    if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerDraw2].value = 1;
+    }else if(cards[dealerDraw2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerDraw2].value = 11;
+        dealer2Ace11 = true;
+    }
+    if(cards[dealerDraw2].suit == 'Hearts' || cards[dealerDraw2].suit == 'Diamonds') {
+        dealerSuit2.style.backgroundColor = 'red';
+    } else {
+        dealerSuit2.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerDraw2].value;
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit1'><h2 id='dealerHit1Num'>0</h2><canvas id='dealerHit1Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit1Num = document.getElementById('dealerHit1Num');
+      let dealerHit1 = Math.floor(Math.random() * 52)
+    dealerHit1Num.textContent = cards[dealerHit1].value;
+    if(cards[dealerHit1].value == 'J' || cards[dealerHit1].value == 'Q' || cards[dealerHit1].value == 'K') {
+        cards[dealerHit1].value = 10;
+    }
+    if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit1].value = 1;
+    }else if(cards[dealerHit1].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit1].value = 11;
+        dealer3Ace11 = true;
+    }
+    if(cards[dealerHit1].suit == 'Hearts' || cards[dealerHit1].suit == 'Diamonds') {
+        dealerHit1Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit1Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit1].value;
+    }
+    dealerAceBust();
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit2'><h2 id='dealerHit2Num'>0</h2><canvas id='dealerHit2Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit2Num = document.getElementById('dealerHit2Num');
+      let dealerHit2 = Math.floor(Math.random() * 52)
+    dealerHit2Num.textContent = cards[dealerHit2].value;
+    if(cards[dealerHit2].value == 'J' || cards[dealerHit2].value == 'Q' || cards[dealerHit2].value == 'K') {
+        cards[dealerHit2].value = 10;
+    }
+    if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit2].value = 1;
+    } else if(cards[dealerHit2].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit2].value = 11;
+        dealer4Ace11 = true;
+    }
+    if(cards[dealerHit2].suit == 'Hearts' || cards[dealerHit2].suit == 'Diamonds') {
+        dealerHit2Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit2Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit2].value;
+    }
+    dealerAceBust();
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit3'><h2 id='dealerHit3Num'>0</h2><canvas id='dealerHit3Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit3Num = document.getElementById('dealerHit3Num');
+      let dealerHit3 = Math.floor(Math.random() * 52)
+    dealerHit3Num.textContent = cards[dealerHit3].value;
+    if(cards[dealerHit3].value == 'J' || cards[dealerHit3].value == 'Q' || cards[dealerHit3].value == 'K') {
+        cards[dealerHit3].value = 10;
+    }
+    if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit3].value = 1;
+    }else if(cards[dealerHit3].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit3].value = 11;
+        dealer5Ace11 = true;
+    }
+    if(cards[dealerHit3].suit == 'Hearts' || cards[dealerHit3].suit == 'Diamonds') {
+        dealerHit3Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit3Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit3].value;
+    }
+    dealerAceBust();
+    if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
+      document.getElementById('dealersHits').outerHTML = `<section id='dealerHit4'><h2 id='dealerHit4Num'>0</h2><canvas id='dealerHit4Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
+      let dealerHit4Num = document.getElementById('dealerHit2Num');
+      let dealerHit4 = Math.floor(Math.random() * 52)
+    dealerHit4Num.textContent = cards[dealerHit4].value;
+    if(cards[dealerHit4].value == 'J' || cards[dealerHit4].value == 'Q' || cards[dealerHit4].value == 'K') {
+        cards[dealerHit4].value = 10;
+    }
+    if(cards[dealerHit4].value == 'A' && document.getElementById('dealerHand').innerText >= 11) {
+        cards[dealerHit4].value = 1;
+    }else if(cards[dealerHit4].value == 'A' && document.getElementById('dealerHand').innerText < 11) {
+        cards[dealerHit4].value = 11;
+        dealer4Ace11 = true;
+    }
+    if(cards[dealerHit4].suit == 'Hearts' || cards[dealerHit4].suit == 'Diamonds') {
+        dealerHit4Suit.style.backgroundColor = 'red';
+    } else {
+        dealerHit4Suit.style.backgroundColor = 'black';
+    }
+    document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit4].value;
+    }
+    dealerAceBust();
+    gameMessage();
 }
