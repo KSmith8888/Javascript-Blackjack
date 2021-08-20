@@ -234,7 +234,7 @@ button {
   #container {
     display: grid;
     grid-template-columns: 17vw 17vw 17vw 17vw 17vw 15vw;
-    grid-template-rows: 80px 70px 60px 110px 60px 60px 60px 100px;
+    grid-template-rows: 80px 70px 60px 110px 40px 60px 60px 100px;
     justify-items: center;
     
   }
