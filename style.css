@@ -105,3 +105,120 @@ button {
   left: 110px;
   margin-top: -29vh;
 }
+
+#dealerHit1 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 106px;
+  margin-top: -14vh;
+}
+
+#dealerHit2 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 216px;
+  margin-top: -32vh;
+}
+
+#dealerHit3 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 327px;
+  margin-top: -32vh;
+}
+
+#dealerHit4 {
+  background-color: white;
+  width: 100px;
+  height: 175px;
+  border: 3px solid black;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  left: 535px;
+  margin-top: -28vh;
+}
+
+@media (max-width: 700px) {
+  #card1,
+  #card2,
+  #hit1Card,
+  #hit2Card,
+  #hit3Card,
+  #hit4Card,
+  #dealerCard1,
+  #dealerCard2,
+  #dealerHit1,
+  #dealerHit2,
+  #dealerHit3,
+  #dealerHit4 {
+    height: 90px;
+    width: 50px;
+  }
+  #card1 {
+    top: -12vh;
+    left: 7vw;
+  }
+  #card2 {
+    left: 19vw;
+    top: -1vh;
+  }
+  #hit1Card {
+    left: 31vw;
+    top: 5vh;
+    margin-top: -27vh;
+    margin-bottom: 1vh;
+  }
+  #hit2Card {
+    margin-top: -9vh;
+    margin-bottom: 5vh;
+    left: 7vw;
+    top: 11vh;
+  }
+  #hit3Card {
+    margin-top: -15vh;
+    left: 19vw;
+  }
+  #hit4Card {
+    left: 31vw;
+    margin-top: -21vh;
+  }
+  #dealerCard1 {
+    left: 7vw;
+    margin-top: 1vh;
+    top: -11vh;
+  }
+  #dealerCard2 {
+    left: 19vw;
+    top: 0vh;
+  }
+  #dealerHit1 {
+    left: 11vw;
+    top: -3vh;
+  }
+  #dealerHit2 {
+    left: -13vw;
+    top: 27vh;
+  }
+  button {
+    margin-top: 5vh;
+  }
+  body {
+    position: fixed;
+  }
+}
