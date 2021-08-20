@@ -1,10 +1,44 @@
 body {
   background-color: green;
-  position: relative;
 }
 
-#gameNum {
-  background-color: red;
+#container {
+  display: grid;
+  grid-template-columns: 9vw 9vw 9vw 9vw 9vw 9vw;
+  grid-template-rows: 10vh 6vh 10vh 30vh 5vh 10vh 10vh 20vh;
+  justify-items: center;
+  height: 101vh;
+}
+
+h2 {
+  grid-column: 1 / 1;
+}
+
+#yourHandHeader {
+  grid-row: 2 / 2;
+  grid-column: 1 / 1;
+}
+
+#dealerHandHeader {
+  grid-row: 6 / 6;
+  grid-column: 1 / 1;
+  text-align: center;
+}
+
+#yourHand {
+  grid-row: 3 / 3;
+  grid-column: 1 / 1;
+}
+
+#dealerHand {
+  grid-row: 7 / 7;
+  grid-column: 1 / 1;
+}
+
+h1 {
+  grid-column: 1 / 4;
+  grid-row: 1 / 1;
+  text-align: center;
 }
 
 #card1 {
@@ -14,7 +48,8 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
+  grid-row: 4 / 4;
+  grid-column: 1/ 1;
   left: 0;
 }
 
@@ -25,9 +60,8 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 110px;
-  margin-top: -29vh;
+  grid-row: 4 / 4;
+  grid-column: 2 / 2;
 }
 
 #hit1Card {
@@ -37,9 +71,8 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 220px;
-  margin-top: -32vh;
+  grid-column: 3 / 3;
+  grid-row: 4 / 4;
 }
 
 #hit2Card {
@@ -49,9 +82,8 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 330px;
-  margin-top: -32vh;
+  grid-column: 4 / 4;
+  grid-row: 4 / 4;
 }
 
 #hit3Card {
@@ -61,9 +93,8 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 440px;
-  margin-top: -32vh;
+  grid-column: 5 / 5;
+  grid-row: 4 / 4;
 }
 
 #hit4Card {
@@ -73,14 +104,21 @@ body {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 550px;
-  margin-top: -32vh;
+  grid-column: 6 / 6;
+  grid-row: 4 / 4;
 }
 
 button {
   margin-left: 10px;
   margin-right: 10px;
+  width: 100px;
+  height: 25px;
+  grid-row: 5 / 5;
+}
+
+#stay {
+  grid-row: 5 / 5;
+  grid-column: 2 / 2;
 }
 
 #dealerCard1 {
@@ -90,8 +128,8 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 0;
+  grid-column: 1 / 1;
+  grid-row: 8 / 8;
 }
 
 #dealerCard2 {
@@ -101,9 +139,12 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 110px;
-  margin-top: -29vh;
+  grid-column: 2 / 2;
+  grid-row: 8 / 8;
+}
+
+#dealersHits {
+  grid-row: 8 / 8;
 }
 
 #dealerHit1 {
@@ -113,9 +154,10 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 106px;
+  grid-column: 3 / 3;
+  grid-row: 8 / 8;
   margin-top: -14vh;
+  margin-left: 9vw;
 }
 
 #dealerHit2 {
@@ -125,9 +167,10 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 216px;
+  grid-column: 4 / 4;
+  grid-row: 8 / 8;
   margin-top: -32vh;
+  margin-left: 18vw;
 }
 
 #dealerHit3 {
@@ -137,9 +180,10 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 327px;
+  grid-column: 5 / 5;
+  grid-row: 8 / 8;
   margin-top: -32vh;
+  margin-left: 27vw;
 }
 
 #dealerHit4 {
@@ -149,9 +193,10 @@ button {
   border: 3px solid black;
   text-align: center;
   border-radius: 15px;
-  position: relative;
-  left: 535px;
-  margin-top: -28vh;
+  grid-column: 6 / 6;
+  grid-row: 8 / 8;
+  margin-top: -32vh;
+  margin-left: 36vw;
 }
 
 @media (max-width: 700px) {
@@ -170,55 +215,11 @@ button {
     height: 90px;
     width: 50px;
   }
-  #card1 {
-    top: -12vh;
-    left: 7vw;
-  }
-  #card2 {
-    left: 19vw;
-    top: -1vh;
-  }
-  #hit1Card {
-    left: 31vw;
-    top: 5vh;
-    margin-top: -27vh;
-    margin-bottom: 1vh;
-  }
-  #hit2Card {
-    margin-top: -9vh;
-    margin-bottom: 5vh;
-    left: 7vw;
-    top: 11vh;
-  }
-  #hit3Card {
-    margin-top: -15vh;
-    left: 19vw;
-  }
-  #hit4Card {
-    left: 31vw;
-    margin-top: -21vh;
-  }
-  #dealerCard1 {
-    left: 7vw;
-    margin-top: 1vh;
-    top: -11vh;
-  }
-  #dealerCard2 {
-    left: 19vw;
-    top: 0vh;
-  }
-  #dealerHit1 {
-    left: 11vw;
-    top: -3vh;
-  }
-  #dealerHit2 {
-    left: -13vw;
-    top: 27vh;
-  }
-  button {
-    margin-top: 5vh;
-  }
-  body {
-    position: fixed;
-  }
+  #container {
+  display: grid;
+  grid-template-columns: 15vw 15vw 15vw 15vw 15vw 15vw;
+  grid-template-rows: 10vh 6vh 10vh 30vh 5vh 10vh 10vh 20vh;
+  justify-items: center;
+  height: 101vh;
+}
 }
