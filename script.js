@@ -2,7 +2,6 @@ let cardOne = document.getElementById('card1');
 let cardTwo = document.getElementById('card2');
 let cardOneNum = document.getElementById('card1Num');
 let cardTwoNum = document.getElementById('card2Num');
-let dealCard1Num = document.getElementById('dealerCard1Num');
 
 let aceEquals11 = false;
 let ace2Equals11 = false;
@@ -38,7 +37,7 @@ window.onload = createDeck;
 
 function dealerDraw() {
     let dealerDraw1 = Math.floor(Math.random() * 52)
-    dealCard1Num.textContent = cards[dealerDraw1].value;
+    document.getElementById('dealerCard1Num').textContent = cards[dealerDraw1].value;
     if(cards[dealerDraw1].value == 'J' || cards[dealerDraw1].value == 'Q' || cards[dealerDraw1].value == 'K') {
         cards[dealerDraw1].value = 10;
     }
