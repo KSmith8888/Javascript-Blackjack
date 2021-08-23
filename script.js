@@ -322,8 +322,14 @@ function stay() {
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerDraw2].value;
     if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
       document.getElementById('dealersHits').outerHTML = `<section id='dealerHit1'><h2 id='dealerHit1Num'>0</h2><canvas id='dealerHit1Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit1Num = document.getElementById('dealerHit1Num');
-      let dealerHit1 = Math.floor(Math.random() * 52)
+        dealHitFunc();
+    } else {
+        gameMessage();
+    }
+}
+    function dealHitFunc() {
+    let dealerHit1Num = document.getElementById('dealerHit1Num');
+    let dealerHit1 = Math.floor(Math.random() * 52)
     dealerHit1Num.textContent = cards[dealerHit1].value;
     if(cards[dealerHit1].value == 'J' || cards[dealerHit1].value == 'Q' || cards[dealerHit1].value == 'K') {
         cards[dealerHit1].value = 10;
@@ -340,12 +346,17 @@ function stay() {
         dealerHit1Suit.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit1].value;
-    }
     dealerAceBust();
     if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
       document.getElementById('dealersHits').outerHTML = `<section id='dealerHit2'><h2 id='dealerHit2Num'>0</h2><canvas id='dealerHit2Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit2Num = document.getElementById('dealerHit2Num');
-      let dealerHit2 = Math.floor(Math.random() * 52)
+        dealHitFunc2();
+    } else {
+        gameMessage();
+    }
+}
+function dealHitFunc2() {
+    let dealerHit2Num = document.getElementById('dealerHit2Num');
+    let dealerHit2 = Math.floor(Math.random() * 52)
     dealerHit2Num.textContent = cards[dealerHit2].value;
     if(cards[dealerHit2].value == 'J' || cards[dealerHit2].value == 'Q' || cards[dealerHit2].value == 'K') {
         cards[dealerHit2].value = 10;
@@ -362,12 +373,17 @@ function stay() {
         dealerHit2Suit.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit2].value;
-    }
     dealerAceBust();
     if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
       document.getElementById('dealersHits').outerHTML = `<section id='dealerHit3'><h2 id='dealerHit3Num'>0</h2><canvas id='dealerHit3Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit3Num = document.getElementById('dealerHit3Num');
-      let dealerHit3 = Math.floor(Math.random() * 52)
+        dealHitFunc3();
+    }else {
+        gameMessage();
+    }
+}
+function dealHitFunc3() {
+    let dealerHit3Num = document.getElementById('dealerHit3Num');
+    let dealerHit3 = Math.floor(Math.random() * 52)
     dealerHit3Num.textContent = cards[dealerHit3].value;
     if(cards[dealerHit3].value == 'J' || cards[dealerHit3].value == 'Q' || cards[dealerHit3].value == 'K') {
         cards[dealerHit3].value = 10;
@@ -384,12 +400,17 @@ function stay() {
         dealerHit3Suit.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit3].value;
-    }
     dealerAceBust();
     if(parseInt(document.getElementById('dealerHand').innerText) < 17) {
       document.getElementById('dealersHits').outerHTML = `<section id='dealerHit4'><h2 id='dealerHit4Num'>0</h2><canvas id='dealerHit4Suit' height='15px' width='10px'><p>New Card Suit</p></canvas></section><br><div id='dealersHits'></div>`;
-      let dealerHit4Num = document.getElementById('dealerHit2Num');
-      let dealerHit4 = Math.floor(Math.random() * 52)
+        dealHitFunc4();
+    } else {
+        gameMessage();
+    }
+}
+function dealHitFunc4() {
+    let dealerHit4Num = document.getElementById('dealerHit4Num');
+    let dealerHit4 = Math.floor(Math.random() * 52)
     dealerHit4Num.textContent = cards[dealerHit4].value;
     if(cards[dealerHit4].value == 'J' || cards[dealerHit4].value == 'Q' || cards[dealerHit4].value == 'K') {
         cards[dealerHit4].value = 10;
@@ -406,7 +427,6 @@ function stay() {
         dealerHit4Suit.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = parseInt(document.getElementById('dealerHand').innerText) + cards[dealerHit4].value;
-    }
-    dealerAceBust();
     gameMessage();
+    dealerAceBust();
 }
