@@ -35,6 +35,10 @@ for(let i = 0; i < cardSuits.length; i++) {
 
 window.onload = createDeck;
 
+function reset() {
+  location.reload();
+}
+
 function dealerDraw() {
     let dealerDraw1 = Math.floor(Math.random() * 52)
     document.getElementById('dealerCard1Num').textContent = cards[dealerDraw1].value;
@@ -113,11 +117,13 @@ function drawCards() {
     }
     document.getElementById('yourHand').innerText = cards[rando].value + cards[rando2].value;
     if((document.getElementById('yourHand').innerText = cards[rando].value + cards[rando2].value) < 21) {
-        document.getElementById('drawCards').outerHTML = `<button id='drawCards' onclick='hit1()'>Hit</button><button id='stay()' onclick='stay()'>Stay</button>`
+        document.getElementById('drawCards').outerHTML = `<button id='drawCards' onclick='hit1()'>Hit</button><button id='stay' onclick='stay()'>Stay</button>`
     } else {
         setTimeout(function() {
         alert('Blackjack! You Win');
         }, 300);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
     }
     dealerDraw();
 }
@@ -146,6 +152,9 @@ function hit1() {
         setTimeout(function() {
     alert('You Busted! Better luck next time');
     }, 300);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
 }
 }
 
@@ -169,14 +178,14 @@ function hit2() {
         hit2Suit.style.backgroundColor = 'black';
     }
     document.getElementById('yourHand').innerText = parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value;
-    if(document.getElementById('card1Num').innerHTML === 'A' && document.getElementById('card2Num').innerHTML === 'A' && parseInt(document.getElementById('yourHand').innerText) + cards[randoNew].value > 21) {
-        document.getElementById('yourHand').innerText -= 10;
-    }
     doesAceBust();
     if(parseInt(document.getElementById('yourHand').innerText) > 21) {
         setTimeout(function() {
         alert('You Busted! Better luck next time')
         }, 300);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     }
 }
 
@@ -205,6 +214,9 @@ function hit3() {
         setTimeout(function() {
         alert('You Busted! Better luck next time')
         }, 300);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     }
 }
 
@@ -233,6 +245,9 @@ function hit4() {
         setTimeout(function() {
         alert('You Busted! Better luck next time')
         }, 300);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     }
 }
 
@@ -241,14 +256,23 @@ function gameMessage() {
       setTimeout(function() {
       alert('You lose! Better luck next time')
       }, 500);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     } else if(parseInt(document.getElementById('dealerHand').innerText) == parseInt(document.getElementById('yourHand').innerText)) {
         setTimeout(function() {
         alert('Push!')
         }, 500);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     } else {
         setTimeout(function() {
         alert('You Win!')
         }, 500);
+        document.getElementById('drawCards').outerHTML =
+        `<button id='drawCards' onclick='reset()'>Play Again</button>`
+        document.getElementById('stay').outerHTML = ``;
     }
 }
 
