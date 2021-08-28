@@ -435,6 +435,6 @@ function dealHitFunc4() {
         dealerHit4Suit.style.backgroundColor = 'black';
     }
     document.getElementById('dealerHand').innerText = dealerHand;
-    gameMessage();
     dealerAceBust();
+    gameMessage();
 }
